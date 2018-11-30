@@ -1,0 +1,33 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "eject": "expo eject"
+  },
+  "dependencies": {
+    "expo": "^31.0.2",
+    "lodash": "^4.17.11",
+    "moment": "^2.22.2",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "react-navigation": "^3.0.4"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "23.6.0",
+    "babel-preset-expo": "^5.0.0",
+    "eslint": "5.1.0",
+    "eslint-config-fb-strict": "22.1.0",
+    "eslint-config-fbjs": "2.0.1",
+    "eslint-plugin-eslint-comments": "^3.0.1",
+    "eslint-plugin-flowtype": "2.43.0",
+    "eslint-plugin-jest": "21.8.0",
+    "eslint-plugin-prettier": "2.6.0",
+    "eslint-plugin-react": "7.8.2",
+    "eslint-plugin-react-native": "3.5.0",
+    "flow-bin": "^0.78.0"
+  },
+  "private": true
+}
