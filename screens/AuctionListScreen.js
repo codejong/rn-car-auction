@@ -93,14 +93,16 @@ class MyCarsScreen extends Component {
           onRefresh={this.refreshData}
           refreshing={this.state.refreshing}
           keyExtractor={(item, index) => item.listingId}
-          ItemSeparatorComponent={
-            Platform.OS !== 'android' &&
-            (({ highlighted }) => (
-              <View
-                style={[styles.separator, highlighted && { marginLeft: 0 }]}
-              />
-            ))
-          }
+          ItemSeparatorComponent={({ highlighted }) => (
+            <View
+              style={{
+                height: StyleSheet.hairlineWidth,
+                marginLeft: 20,
+                width: '100%',
+                backgroundColor: 'gray',
+              }}
+            />
+          )}
         />
       </View>
     );
@@ -115,6 +117,158 @@ const MOCK_LISTING = [
   {
     $class: 'org.acme.vehicle.auction.VehicleListing',
     listingId: 'listingId:ABCD',
+    reservePrice: 3500,
+    description: 'Arium Nova',
+    state: 'FOR_SALE',
+    offers: [
+      {
+        $class: 'org.acme.vehicle.auction.Offer',
+        bidPrice: 2000,
+        listing: {
+          $class: 'org.acme.vehicle.auction.VehicleListing',
+          listingId: 'listingId:ABCD',
+          reservePrice: 3800,
+          description: 'Arium Nova',
+          state: 'FOR_SALE',
+          offers: [
+            {
+              $class: 'org.acme.vehicle.auction.Offer',
+              bidPrice: 2000,
+              listing:
+                'resource:org.acme.vehicle.auction.VehicleListing#listingId:ABCD',
+              member: {
+                $class: 'org.acme.vehicle.auction.Member',
+                balance: 5000,
+                email: 'memberA@acme.org',
+                firstName: 'Amy',
+                lastName: 'Williams',
+              },
+              transactionId:
+                '1a170ac75b8cf59180dfd0b8fbfbb066dbc4a755cdfca387497db58df852ecd9',
+              timestamp: '2018-12-04T15:32:30.207Z',
+            },
+            {
+              $class: 'org.acme.vehicle.auction.Offer',
+              bidPrice: 3800,
+              listing:
+                'resource:org.acme.vehicle.auction.VehicleListing#listingId:ABCD',
+              member: {
+                $class: 'org.acme.vehicle.auction.Member',
+                balance: 5000,
+                email: 'memberB@acme.org',
+                firstName: 'Billy',
+                lastName: 'Thompson',
+              },
+              transactionId:
+                'bf43d1ddbb2ccc9b7a6d7f9dcddeae9a66193fece4c3f51f122f348f7cd65c3b',
+              timestamp: '2018-12-04T15:32:41.705Z',
+            },
+          ],
+          vehicle: {
+            $class: 'org.acme.vehicle.auction.Vehicle',
+            vin: 'vin:1234',
+            owner: {
+              $class: 'org.acme.vehicle.auction.Member',
+              balance: 5000,
+              email: 'memberA@acme.org',
+              firstName: 'Amy',
+              lastName: 'Williams',
+            },
+          },
+        },
+        member: {
+          $class: 'org.acme.vehicle.auction.Member',
+          balance: 5000,
+          email: 'memberA@acme.org',
+          firstName: 'Amy',
+          lastName: 'Williams',
+        },
+        transactionId:
+          '1a170ac75b8cf59180dfd0b8fbfbb066dbc4a755cdfca387497db58df852ecd9',
+        timestamp: '2018-12-04T15:32:30.207Z',
+      },
+      {
+        $class: 'org.acme.vehicle.auction.Offer',
+        bidPrice: 3800,
+        listing: {
+          $class: 'org.acme.vehicle.auction.VehicleListing',
+          listingId: 'listingId:ABCD',
+          reservePrice: 3500,
+          description: 'Arium Nova',
+          state: 'FOR_SALE',
+          offers: [
+            {
+              $class: 'org.acme.vehicle.auction.Offer',
+              bidPrice: 2000,
+              listing:
+                'resource:org.acme.vehicle.auction.VehicleListing#listingId:ABCD',
+              member: {
+                $class: 'org.acme.vehicle.auction.Member',
+                balance: 5000,
+                email: 'memberA@acme.org',
+                firstName: 'Amy',
+                lastName: 'Williams',
+              },
+              transactionId:
+                '1a170ac75b8cf59180dfd0b8fbfbb066dbc4a755cdfca387497db58df852ecd9',
+              timestamp: '2018-12-04T15:32:30.207Z',
+            },
+            {
+              $class: 'org.acme.vehicle.auction.Offer',
+              bidPrice: 3900,
+              listing:
+                'resource:org.acme.vehicle.auction.VehicleListing#listingId:ABCD',
+              member: {
+                $class: 'org.acme.vehicle.auction.Member',
+                balance: 5000,
+                email: 'memberB@acme.org',
+                firstName: 'Billy',
+                lastName: 'Thompson',
+              },
+              transactionId:
+                'bf43d1ddbb2ccc9b7a6d7f9dcddeae9a66193fece4c3f51f122f348f7cd65c3b',
+              timestamp: '2018-12-04T15:32:41.705Z',
+            },
+          ],
+          vehicle: {
+            $class: 'org.acme.vehicle.auction.Vehicle',
+            vin: 'vin:1234',
+            owner: {
+              $class: 'org.acme.vehicle.auction.Member',
+              balance: 5000,
+              email: 'memberA@acme.org',
+              firstName: 'Amy',
+              lastName: 'Williams',
+            },
+          },
+        },
+        member: {
+          $class: 'org.acme.vehicle.auction.Member',
+          balance: 5000,
+          email: 'memberB@acme.org',
+          firstName: 'Billy',
+          lastName: 'Thompson',
+        },
+        transactionId:
+          'bf43d1ddbb2ccc9b7a6d7f9dcddeae9a66193fece4c3f51f122f348f7cd65c3b',
+        timestamp: '2018-12-04T15:32:41.705Z',
+      },
+    ],
+    vehicle: {
+      $class: 'org.acme.vehicle.auction.Vehicle',
+      vin: 'vin:1234',
+      owner: {
+        $class: 'org.acme.vehicle.auction.Member',
+        balance: 5000,
+        email: 'memberA@acme.org',
+        firstName: 'Amy',
+        lastName: 'Williams',
+      },
+    },
+  },
+  {
+    $class: 'org.acme.vehicle.auction.VehicleListing',
+    listingId: 'listingId:ABCDXX',
     reservePrice: 3500,
     description: 'Arium Nova',
     state: 'FOR_SALE',
@@ -191,7 +345,7 @@ const MOCK_LISTING = [
         listing: {
           $class: 'org.acme.vehicle.auction.VehicleListing',
           listingId: 'listingId:ABCD',
-          reservePrice: 3500,
+          reservePrice: 3800,
           description: 'Arium Nova',
           state: 'FOR_SALE',
           offers: [
@@ -213,7 +367,7 @@ const MOCK_LISTING = [
             },
             {
               $class: 'org.acme.vehicle.auction.Offer',
-              bidPrice: 3500,
+              bidPrice: 3800,
               listing:
                 'resource:org.acme.vehicle.auction.VehicleListing#listingId:ABCD',
               member: {

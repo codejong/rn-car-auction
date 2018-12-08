@@ -102,8 +102,6 @@ class MyCarsScreen extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  separator: {},
-});
+const styles = StyleSheet.create({});
 
 export default MyCarsScreen;
