@@ -117,7 +117,7 @@ class VehicleDetailScreen extends Component {
                 backgroundColor: '#aaa',
               }}
             />
-            <View style={{ flexDirection: 'row', flexWrap: true }}>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
               <IconText iconName={'ios-barcode'}>
                 {this.state.vehicle.vin}
               </IconText>
