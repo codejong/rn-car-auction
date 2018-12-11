@@ -156,7 +156,6 @@ class VehicleDetailScreen extends Component {
         return (
           <View
             style={{
-              height: 40,
               marginTop: 30,
               paddingLeft: 15,
               paddingRight: 15,

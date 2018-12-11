@@ -11,7 +11,7 @@ class LoginScreen extends React.Component {
         style={{
           flex: 1,
           flexDirection: 'column',
-          backgroundColor: 'tomato',
+          // backgroundColor: 'tomato',
           justifyContent: 'center',
         }}
         behavior="padding"
@@ -21,7 +21,7 @@ class LoginScreen extends React.Component {
           <Text
             style={{
               fontSize: 30,
-              color: 'white',
+              color: 'tomato',
               marginTop: -20,
               fontWeight: '200',
             }}
