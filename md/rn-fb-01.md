@@ -526,8 +526,8 @@ flexDirection과 직교하는 방향에서 어느쪽으로 정렬 할 것인가?
 #### 🐸 개구리 게임 실습
 - https://flexboxfroggy.com/#ko
 - RN과 상관 없는 단계
-	- 14 단계 답 : `1`
-	- 15 단계 답 : `-1`
+	- 14 단계 답 : `order: 1;`
+	- 15 단계 답 : `order: -1;`
 
 | CSS | RN Style |
 |--|--|
@@ -548,6 +548,26 @@ flexDirection과 직교하는 방향에서 어느쪽으로 정렬 할 것인가?
 
 ---
 
+### 24단계 힌트
+
+```
+flex-direction: ;
+flex-wrap: ;
+justify-content: ;
+align-content: ;
+```
+
+---
+
+### 24단계 정답
+```
+flex-direction: column-reverse;
+flex-wrap: wrap-reverse;
+justify-content: center;
+align-content: space-between;
+```
+---
+
 ### 레이아웃 종합 실습 : Mondrian 따라하기
 ![50%](https://ws1.sinaimg.cn/large/006tNbRwgy1fxz7iucyeaj30me112wf6.jpg)
 
@@ -559,41 +579,9 @@ flexDirection과 직교하는 방향에서 어느쪽으로 정렬 할 것인가?
 
 ![](https://tutorialehtml.com/assets_tutorials/img/boxmodel.gif)
 
----
-
-### 스타일 정의 방법
-
-- 인라인 스타일
-```
-<Text>
-  The quick <Text style={{fontStyle: "italic"}}>brown</Text> dog.
-</Text>
-```
-- 오브젝트로 스타일 정의
-```
-const bold = {
-  fontWeight: "bold" 
-};
-```
-- Stylesheet.create 이용
-```
-const styles = StyleSheet.create({ 
-  button: {
-    borderRadius: "8px",
-    backgroundColor: "#99CCFF" 
-  }
-});
-```
-
----
-
-## 어떤 방법으로 스타일을 써야 하나?
-
-- 오브젝트로 스타일 정의하기 보다 StyleSheet.create 이용
-  - 생성한 스타일이 네이티브 영역에 존재하고 해당 스타일의 id만 브릿지를 통해서 전달~~함~~ ==예정==
-  - > It also allows to send the style only once through the bridge. All subsequent uses are going to refer an id (==not implemented yet==).
-- 인라인은 아주 요긴
-
+- 어띠까지 height, width에 포함될까?
+- 영역 밖의 여백?
+- 영역 안의 여백?
 ---
 
 ## Q2-4. 스타일 관리방법?
@@ -733,219 +721,6 @@ The quick <Em>brown</Em> fox jumped over the lazy <Strong>dog</Strong>.
 ```
 - 지원하는 font style 모음 [공식 문서](https://facebook.github.io/react-native/docs/text-style-props)
 
----
-
-### `<Text>` 실습
-| ![25%](https://ws4.sinaimg.cn/large/006tNbRwgy1fy0e9viu8sj30u01szafk.jpg) | ![](https://ws2.sinaimg.cn/large/006tNbRwgy1fy0earl2qtj30js06it9p.jpg) |
-|--|--|
 
 ---
 
-### car auction 만들기
-
-| ![25%](https://ws1.sinaimg.cn/large/006tNbRwgy1fxz8bfiehjj30qg19ygx5.jpg) | ![50%](https://ws3.sinaimg.cn/large/006tNbRwgy1fy0ihz2yvmj30uw062dhp.jpg) |
-|--|--|
-
-```
-borderRadius: 5,
-borderColor: '#aaa',
-borderWidth: 1 //StyleSheet.hairlineWidth,
-```
-
----
-
-## Q2-6. 이미지를 표현하는 방법은?
-
----
-
-### `<Image>`
-> 언제나 [공식 가이드](https://facebook.github.io/react-native/docs/images) 꼼꼼히 살펴봅시다.
----
-
-### `<Image>` 리소스 불러오는 두가지 방법
-
-```
-// 프로젝트 폴더에 넣은 이미지 (정적 이미지 리소스)
-<Image source={require("./puppies.png")} />
-
-// uri로 접근하는 이미지 (인터넷, 카메라롤 ...)
-<Image source={{uri:"https://facebook.github.io/react/img/logo_og.png"}} 
- style={{width: 400, height: 400}} />
-```
-- 원격 이미지 소스를 이용할 경우 이미지 사이즈를 따로 지정해야 한다.
-- 자식 컨텐츠를 가질 수 없다. 배경으로 이미지를 넣고 싶다면
-  - [`<ImageBackground>`](https://github.com/facebook/react-native/blob/master/Libraries/Image/ImageBackground.js) 를 이용하거나 [`StyleSheet.absoultefill`](https://facebook.github.io/react-native/docs/stylesheet#absolutefill)으로 스타일링
-
----
-
-### `<Image>` 정적 이미지 리소스 장점
-
-```
-.
-├── button.js
-└── img
-    ├── check@2x.png
-    └── check@3x.png
-    └── done.ios.png
-    └── done.android.png
-```
-```
-<Image source={require('./img/check.png')} />
-<Image source={require('./img/done.png')} />
-```
-
-- iOS와 Android 동일한 방법으로 사용
-- JS 파일처럼 관리되고 불러옴
-- 코드 변경할 때 처럼 시뮬레이터만 refresh해서 확인 가능
-- 이미지 사이즈, 비율, 디바이스 디스플레이 등을 알아서...
-
----
-
-### `<Image/>` 정적 이미지 리소스 사용시 주의 점
-```
-// GOOD
-<Image source={require('./my-icon.png')} />;
-
-// BAD
-var icon = this.props.active ? 'my-icon-active' : 'my-icon-inactive';
-<Image source={require('./' + icon + '.png')} />;
-
-// GOOD
-var icon = this.props.active
-  ? require('./my-icon-active.png')
-  : require('./my-icon-inactive.png');
-<Image source={icon} />;
-```
-
----
-
-### `<Image>` 원격 이미지 리소스 
-- 반드시 사이즈를 적어야 한다!
-- [Cache Control (iOS Only)](https://facebook.github.io/react-native/docs/images#cache-control-ios-only)
-  - 공격적인 cache를 원한다면  [DylanVann/react-native-fast-image](https://github.com/DylanVann/react-native-fast-image)
-
----
-
-### `<Image>`에서 유용한 속성
-> 모바일에서는 화면의 가로 세로 비율이 다르므로 `cover`속성을 유용
-
-![image-20180928101934452](https://ws4.sinaimg.cn/large/006tNc79gy1fvp1fr7okkj30x60j0gsk.jpg)
-
----
-
-## Q2-7. 아이콘을 표시하는 방법은?
-
----
-
-### 잠깐 🤔 : 그래픽을 표현할 때 ==bitmap== 과 ==vector==의 차이?
-
----
-
-### 
-
-![](https://filecamp.com/wp-content/uploads/2016/02/vector-vs-bitmap2-1.png)
-> [출처](https://filecamp.com/blog/vector-vs-bitmap-images-explained/)
-
----
-
-### 잠깐 🤔 : 폰트는 비트맵일까? 벡터일까?
-
----
-
-### 🙋🏻‍ : 벡터~
-
----
-![](https://ws4.sinaimg.cn/large/006tNbRwgy1fy0f16hgupj30yw0km75u.jpg)
-### 다양한 아이콘 폰트
-- https://ionicons.com
-- https://fontawesome.com
-
----
-
-### `@expo/vector-icons` 모듈
-- 다양한 vector 아이콘을 expo환경에서 바로 쓸 수 있게 해주는 모듈
-- 아이콘 찾는 방법 : https://expo.github.io/vector-icons/
-```
-import React from 'react';
-import { Ionicons } from '@expo/vector-icons';
-
-export default class IconExample extends React.Component {
-  render() {
-    return (
-      <Ionicons name="md-checkmark-circle" size={32} color="green" />
-    );
-  }
-}
-```
-
----
-
-### 실습
-
-| ![25%](https://ws1.sinaimg.cn/large/006tNbRwgy1fxz8bfiehjj30qg19ygx5.jpg) | ![50%](https://ws1.sinaimg.cn/large/006tNbRwgy1fy0fcctfg7j30ug0643yx.jpg) |
-|--|--|
-
-```
-borderRadius: 5,
-borderColor: '#aaa',
-borderWidth: 1 //StyleSheet.hairlineWidth,
-```
-```
-<TextInput style={{height:40}} placeholder="이름"/>
-```
----
-
-### 실습 2
-Newyork Time 따라해보기
-| ![25%](https://ws1.sinaimg.cn/large/006tNbRwgy1fy0g9bnv2xj30u01lt4qp.jpg) | ![50%](https://ws1.sinaimg.cn/large/006tNbRwgy1fy0gajs2u8j30v90ffn1x.jpg) |
-|--|--|
-
----
-
-## Q2-9. 재사용을 위한 컴포넌트제작 방법은?
-
----
-
-### 재사용하는 Icon이 들어간 TextInput
- ![50%](https://ws1.sinaimg.cn/large/006tNbRwgy1fy0fcctfg7j30ug0643yx.jpg) 
-| ![25%](https://ws1.sinaimg.cn/large/006tNbRwgy1fxz8bfiehjj30qg19ygx5.jpg) |  ![25%](https://ws2.sinaimg.cn/large/006tNbRwgy1fxz4n6milrj30qg19ydth.jpg)  |
-|--|--|
-
----
-
-### 다음과 같은 props을 넘기는 컴포넌트를 만들어 보자
-```
-<IconTextInput
-  style={{ marginTop: 10 }}
-  iconName={'ios-person'}
-  placeholder={'이름'}
-/>
-```          
-
----
-
-## Q2-10. 버튼 처럼 터치를 다루는 방법?
-
----
-
-
-### 👆 터치와 체스처 다루기 1/3
-> 언제나 [공식 문서](https://facebook.github.io/react-native/docs/handling-touches)부터 살펴보자
-
-| 구분 | 미리 보기([출처](https://medium.com/differential/better-cross-platform-react-native-components-cb8aadeba472)) | 비고 |
-|--|--|--|
-| Button | X | 솔직히 안씀 |
-|TouchableOpacity | ![30%](https://cdn-images-1.medium.com/max/1600/1*gEwt5QNhqOA8ye9K-IVCeQ.gif) | 투명 |
-| TouchableHighlight | ![30%](https://cdn-images-1.medium.com/max/1600/1*_YAPEqWoU7ayTr_MBsTNbg.gif) | 레이어 |
-| TouchableNativeFeedback | ![30%](https://cdn-images-1.medium.com/max/1600/1*rpwifIwvD4WFgwTiB3jt7A.gif) | Android ripple
-
----
-
-### 버튼 처럼 터치 할 수 있게 하려면 감싸라~
-```
-<TouchableOpacity onPress={this._onPressButton}>
-  <View style={styles.button}>
-    <Text style={styles.buttonText}>TouchableOpacity</Text>
-  </View>
-</TouchableOpacity>
-```
