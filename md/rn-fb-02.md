@@ -212,6 +212,11 @@ var icon = this.props.active
 
 ---
 
+```
+// 실습 목표 사용 예
+<RoundButton iconName="ios-car" title="가입"/>
+```
+
 ### `@expo/vector-icons` 모듈
 - 다양한 vector 아이콘을 expo환경에서 바로 쓸 수 있게 해주는 모듈
 - 아이콘 찾는 방법 : https://expo.github.io/vector-icons/
@@ -219,13 +224,10 @@ var icon = this.props.active
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 
-export default class IconExample extends React.Component {
-  render() {
-    return (
-      <Ionicons name="md-checkmark-circle" size={32} color="green" />
-    );
-  }
-}
+
+//사용하려는 곳에서 다음과 같이 사용
+<Ionicons name="md-checkmark-circle"
+  size={32} color="green" />
 ```
 
 ---
@@ -478,3 +480,4 @@ import { KeyboardAvoidingView } from 'react-native';
 ```
 
 ---
+
