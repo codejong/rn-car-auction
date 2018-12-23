@@ -23,7 +23,11 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "kr.yostudio.codejong.class.deploy",
       "supportsTablet": true
+    },
+    "android": {
+      "package": "kr.yostudio.rn.example.carauction"
     }
   }
 }
