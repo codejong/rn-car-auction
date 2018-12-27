@@ -8,21 +8,9 @@
 
 > 하이퍼레저와 연동하는
 # 리액트 네이티브 앱 개발 강의 
-### Day - 2
+part. 2
 
 ![bg](https://class.codejong.kr/uploads/default/original/1X/25a598dfcc7780aa9e146df7c3b885cf132d36e1.png)
-
----
-
-# 시작하기 전에
-> - 감사와 부탁
-> - 질문은 언제나 환영
-> - 8 * 18 = 144
-
-
----
-
-# 어제 배운 내용?
 
 ---
 
@@ -95,10 +83,13 @@ borderWidth: 1 //StyleSheet.hairlineWidth,
 
 
 ## 🐶념잡기 2: 브라우저는 어떻게 동작할까?
+- https://d2.naver.com/helloworld/59361
+- https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/
 
 ---
 
 ## 🐶념잡기 3: VirtualDom 이란?
+- https://velopert.com/3236
 
 ---
 
@@ -394,6 +385,7 @@ export default class PizzaTranslator extends Component {
 ---
 
 ### `<TextInput>` 컴포넌트
+
 ```
 <TextInput
           ref={r => {
@@ -420,7 +412,7 @@ export default class PizzaTranslator extends Component {
 ---
 
 ### KeyboardAvoidingView
-> 글자 입력시 키보드에 화면이 가려지지 않도록 화면의 사이즈를 줄여줌
+> 글자 입력시 보드에 화면이 가려지지 않도록 화면의 사이즈를 줄여줌
 ```
 import { KeyboardAvoidingView } from 'react-native';
 
@@ -466,6 +458,8 @@ import { KeyboardAvoidingView } from 'react-native';
 - data
   - :key: key
 
+
+
 ---
 
 ## Q2. 새로고침 하는 방법?
@@ -481,3 +475,24 @@ import { KeyboardAvoidingView } from 'react-native';
 
 ---
 
+![50%](https://ws3.sinaimg.cn/large/006tNbRwgy1fxz30bo42rj30qg19y7jg.jpg)
+
+---
+
+### SectionList
+
+```js
+// Example 1 (Homogeneous Rendering)
+<SectionList
+  renderItem={({item, index, section}) => <Text key={index}>{item}</Text>}
+  renderSectionHeader={({section: {title}}) => (
+    <Text style={{fontWeight: 'bold'}}>{title}</Text>
+  )}
+  sections={[
+    {title: 'Title1', data: ['item1', 'item2']},
+    {title: 'Title2', data: ['item3', 'item4']},
+    {title: 'Title3', data: ['item5', 'item6']},
+  ]}
+  keyExtractor={(item, index) => item + index}
+/>
+```

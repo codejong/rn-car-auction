@@ -8,7 +8,7 @@
 
 > 하이퍼레저와 연동하는
 # 리액트 네이티브 앱 개발 강의 
-
+part. 1
 
 ![bg](https://class.codejong.kr/uploads/default/original/1X/25a598dfcc7780aa9e146df7c3b885cf132d36e1.png)
 
@@ -720,7 +720,4 @@ The quick <Em>brown</Em> fox jumped over the lazy <Strong>dog</Strong>.
 }
 ```
 - 지원하는 font style 모음 [공식 문서](https://facebook.github.io/react-native/docs/text-style-props)
-
-
----
 
