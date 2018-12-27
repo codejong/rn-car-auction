@@ -336,9 +336,6 @@ Class AppView extends Component{
 
 ---
 
-# 11장 **대규모 애플리케이션에서의 State 관리**
-
----
 
 ## `redux`의 3대 개념
 - store
