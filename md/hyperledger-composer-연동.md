@@ -29,16 +29,17 @@ source ~/.profile
 ```
 cd ~/fabric-dev-servers
 export FABRIC_VERSION=hlfv12
-./startFabric.sh
+./startFabric.sh 
 ```
+- 위 `startFabric.sh` 실패 할 경우 `sudo  ./startFabric.sh`  
 - 최초 실행시에는 adminCard생성 스크립트도 실행
 ```
 ./createPeerAdminCard.sh
 ```
 - playground 실행 : `composer-playground` 
-- `Connection: hlfv1`에 car auction 네트워크 생성 (생성 한 후 carname 추후 사용. 예  `admin@carauction`)
 - http://localhost:8080 에 접속 확인
   - VirtualBox를 이용하고 있는데 외부 브라우저에서 접근하고자 한다면 네트워크 설정에서 포트포워딩 8080 설정
+- 브라우저에서 `Connection: hlfv1`에 car auction 네트워크 생성 (생성 한 후 carname 추후 사용. 예  `admin@carauction`)
 
 ---
 
@@ -86,7 +87,34 @@ composer-rest-server -c admin@carauction -n never -u true -w true
 ]
 ```
 
+---
 
+## rn-car-auction에서 rest 이용하기
+- code clone하기 
+```shell
+git clone git@github.com:codejong/rn-car-auction.git
+```
+- npm 모듈 설치하고 expo 실행하기
+```shell
+cd rn-car-auction
+npm install
+expo start
+```
 
+---
 
+## 정비소 목록 만들기
+- RepairShopListScreen
+- Composer로 model 만들기
+  - [Hyperledger Composer Modeling Language]
+  -  (https://sstone1.github.io/composer/reference/cto_language.html)
 
+- 참고 예)
+```
+asset Vehicle identified by vin {
+  o String vin
+  o String manufactor
+  --> Member owner
+}
+```
+---
