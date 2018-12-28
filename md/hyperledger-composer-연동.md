@@ -15,12 +15,7 @@
 npm install -g composer-cli@0.20 composer-rest-server@0.20 generator-hyperledger-composer@0.20 yo composer-playground@0.20
 ```
 - 설치 도중 npm global 환경의 `EACCESS: permission denied. /usr/lib/node_modules` 발생시 다음과 같이 변경
-```
-mkdir ~/.npm-global
-npm config set prefix '~/.npm-global'
-export PATH=~/.npm-global/bin:$PATH
-source ~/.profile
-```
+  - `npm config delete prefix` 를 터미널에 실행 후 터미널 재시작 후에 다시 시도
 
 ---
 
