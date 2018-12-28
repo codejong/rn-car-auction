@@ -39,7 +39,13 @@ export FABRIC_VERSION=hlfv12
 - playground 실행 : `composer-playground` 
 - http://localhost:8080 에 접속 확인
   - VirtualBox를 이용하고 있는데 외부 브라우저에서 접근하고자 한다면 네트워크 설정에서 포트포워딩 8080 설정
+
+---
+
 - 브라우저에서 `Connection: hlfv1`에 car auction 네트워크 생성 (생성 한 후 carname 추후 사용. 예  `admin@carauction`)
+- erollment ID/PW 를 선택 후 다음 입력
+  - admin
+  - adminpw
 
 ---
 
@@ -106,8 +112,7 @@ expo start
 ## 정비소 목록 만들기
 - RepairShopListScreen
 - Composer로 model 만들기
-  - [Hyperledger Composer Modeling Language]
-  -  (https://sstone1.github.io/composer/reference/cto_language.html)
+  - [Hyperledger Composer Modeling Language](https://sstone1.github.io/composer/reference/cto_language.html)
 
 - 참고 예)
 ```
