@@ -42,6 +42,7 @@ export FABRIC_VERSION=hlfv12
 
 ---
 
+## 실행 방법 2/3
 - 브라우저에서 `Connection: hlfv1`에 car auction 네트워크 생성 (생성 한 후 carname 추후 사용. 예  `admin@carauction`)
 - erollment ID/PW 를 선택 후 다음 입력
   - admin
@@ -49,7 +50,7 @@ export FABRIC_VERSION=hlfv12
 
 ---
 
-## 실행 방법 2/2
+## 실행 방법 3/3
 - rest server 실행
 ```
 composer-rest-server
