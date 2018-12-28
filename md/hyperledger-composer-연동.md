@@ -46,7 +46,7 @@ export FABRIC_VERSION=hlfv12
 ---
 
 ## 실행 방법 3/3
-- rest server 실행
+- 새로운 터미널을 열고 다음 명령어로 rest server 실행
 ```
 composer-rest-server
 ```
