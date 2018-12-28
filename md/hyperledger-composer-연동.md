@@ -94,7 +94,7 @@ composer-rest-server -c admin@carauction -n never -u true -w true
 ## rn-car-auction에서 rest 이용하기
 - code clone하기 
 ```shell
-git clone git@github.com:codejong/rn-car-auction.git
+git clone https://github.com/codejong/rn-car-auction.git
 ```
 - npm 모듈 설치하고 expo 실행하기
 ```shell
