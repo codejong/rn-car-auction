@@ -111,11 +111,9 @@ expo start
 ---
 
 ## 정비소 목록 만들기
-- RepairShopListScreen
-- Composer로 model 만들기
-  - [Hyperledger Composer Modeling Language](https://sstone1.github.io/composer/reference/cto_language.html)
-
-- 참고 예)
+1. Playground Define에 들어가서 Modelfile 부분의 파일에 RepairShop Model 생성하기
+   - [Hyperledger Composer Modeling Language](https://sstone1.github.io/composer/reference/cto_language.html)
+   - 다음 코드와 위 문서를 참고하여 만들기
 ```
 asset Vehicle identified by vin {
   o String vin
@@ -123,4 +121,6 @@ asset Vehicle identified by vin {
   --> Member owner
 }
 ```
+2. rest server를 다시 시작해서 방금 만든 모델이 rest api로 잘 동작하는지 확인하기
+
 ---
