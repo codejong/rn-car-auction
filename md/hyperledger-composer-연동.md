@@ -129,6 +129,7 @@ asset Vehicle identified by vin {
 ```
 2. rest server를 다시 시작해서 방금 만든 모델이 rest api로 잘 동작하는지 확인하기
 
+
 ---
 
 ## rest api include 옵션
@@ -162,6 +163,35 @@ asset Vehicle identified by vin {
   }
 }
 ```
+
+---
+
+## 실습) REST API로 Asset 생성하기
+```
+fetch(
+  'http://localhost:3000/api/Member',
+  {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  }
+)
+```
+
+```
+//data 예
+{
+  $class: 'org.acme.vehicle.auction.Member',
+  balance: 5000,
+  email: 'memberB@acme.org',
+  firstName: 'Billy',
+  lastName: 'Thompson',
+}
+```
+
 
 ---
 
