@@ -24,7 +24,7 @@ npm install -g composer-cli@0.20 composer-rest-server@0.20 generator-hyperledger
 ---
 
 ## 실행 방법 1/4
-### fabric 실행
+### fabric 최초 실행
 - startFabric.sh 실행
 ```
 cd ~/fabric-dev-servers
@@ -32,9 +32,15 @@ export FABRIC_VERSION=hlfv12
 ./startFabric.sh 
 ```
 - 위 `startFabric.sh` 실패 할 경우 `sudo  ./startFabric.sh`  
-- 최초 실행시에는 Peer Admin Card생성 스크립트도 실행
 ```
 ./createPeerAdminCard.sh
+```
+
+### 최초 생성 이후 fabric 재실행
+- 재부팅 등으로 다시 start를 해야할 경우 다음 명령어를 이용해야 기존 정보가 유지된다.
+```
+cd ~/fabric-dev-servers/fabric-scripts/hlfv12/composer
+docker-compose start
 ```
 ---
 
