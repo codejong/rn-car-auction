@@ -75,13 +75,13 @@ composer-rest-server -c YOURCARDNAME -n never -w true
  
 ---
 
-### rest server 실행하는 3가지 방법
-1. `composer-rest-server` 실행후 propmt에 응답하여 실행
-2. `composer-rest-server` 명령어 실행시 option을 지정하여 실행
-```
-composer-rest-server -c YOURCARDNAME -n never -w true
-```
-3. 환경 변수를 설정한 후 `composer-rest-server` 실행
+### 참고) rest server 실행하는 3가지 방법
+- 방법 1. `composer-rest-server` 실행후 propmt에 응답하여 실행
+- 방법 2. `composer-rest-server` 명령어 실행시 option을 지정하여 실행
+
+      composer-rest-server -c YOURCARDNAME -n never -w true
+
+- 방법 3. 환경 변수를 설정한 후 `composer-rest-server` 실행
   - 환경변수는 별도의 파일에 환경 변수 지정하는 코드를 저장해 두고 실행전에 `source`명령어로 불러오면 편리
 
 ---
@@ -205,7 +205,6 @@ fetch(
 ## Business Network Card
 - 블럭체인 비즈니스 네트워크에 연결하기 위해 필요한 모든 정보를 담고 있는 카드
 - 특정 Participant의 Identity를 포함
-- HL Playground가 배포된 비즈니스 네트워크에 접속 할 때도 사용
 - 하나의 배포된 비즈니스 네트워크는 여러개의 비즈니스 네트워크 카드를 갖을 수 있다.
 - [공식 문서](https://hyperledger.github.io/composer/latest/playground/id-cards-playground)
 
@@ -278,6 +277,36 @@ export COMPOSER_PROVIDERS='{
 ---
 
 
+### 잠깐) 화면 전환 관련 이벤트 설정 방법
+- 예를 들어 Vehicle 에디터에서 작성 완료후 다시 MyVehicleList로 넘어가면 자동으로 refresh하고자 한다면 MyVehicleList에 NavigationEvents를 활용하면 된다.
+```
+import React from 'react';
+import { View } from 'react-native';
+import { NavigationEvents } from 'react-navigation';
+
+const MyScreen = () => (
+  <View>
+    <NavigationEvents
+      onWillFocus={payload => console.log('will focus',payload)}
+      onDidFocus={payload => console.log('did focus',payload)}
+      onWillBlur={payload => console.log('will blur',payload)}
+      onDidBlur={payload => console.log('did blur',payload)}
+    />
+    {/* 
+      Your view code
+    */}
+  </View>
+);
+
+export default MyScreen;
+```
+
+---
+
 
 ### composer 관련 참고 링크
 - https://medium.com/@CazChurchUk/developing-multi-user-application-using-the-hyperledger-composer-rest-server-b3b88e857ccc
+- BlockchainNetwork-CompositeJourney (by IBM)
+  - [1단계](https://github.com/IBM/BlockchainNetwork-CompositeJourney/blob/master/README-ko.md)
+  - [2단계](https://github.com/IBM/BlockchainSmartContractTrading-CompositeJourney/blob/master/README-ko.md)
+  - [3단계](https://github.com/IBM/BlockchainEvents-CompositeJourney/blob/master/README-ko.md)
