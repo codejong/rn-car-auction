@@ -367,8 +367,13 @@ export COMPOSER_DATASOURCES='{
 }'
 ```
 - 테스트용 mongodb는 mlab.com 을 이용해보세요.
-  - db를 생성하고
+  - MongoDB Deployments 를 생성(free)하고
   - 해당 db를 사용할 수 있는 사용자를 만들어서
   - 해당 db의 정보를 위 환경 변수에 반영하세요.
 
 ---
+
+### REST 서버의 DB동작 여부 확인
+- /auth/facebook 이용하여 로그인 한 후
+- mlab.com 에서 db 내용을 살펴보면 사용자가 추가된 것을 볼 수 있다.
+- card를 import해도 
