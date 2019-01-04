@@ -205,7 +205,7 @@ fetch(
 ## Business Network Card
 - 블럭체인 비즈니스 네트워크에 연결하기 위해 필요한 모든 정보를 담고 있는 카드
 - 특정 Participant의 Identity를 포함
-- 하나의 배포된 비즈니스 네트워크는 여러개의 비즈니스 네트워크 카드를 갖을 수 있다.
+- 하나의 배포된 비즈니스 네트워크는 여러개의 비즈니스 네트워크 카드를 가질 수 있다.
 - [공식 문서](https://hyperledger.github.io/composer/latest/playground/id-cards-playground)
 
 ---
@@ -241,6 +241,12 @@ export COMPOSER_PROVIDERS='{
 
 ---
 
+```
+npm install -g passport-facebook
+```
+
+---
+
 ## composer rest server의 multi user mode
 - [공식 문서](https://hyperledger.github.io/composer/v0.16/integrating/enabling-multiuser)
 - multi user mode를 활성화 해야만 client에 따라 다른 participant자격으로 요청을 보낼 수 있다.
@@ -266,6 +272,36 @@ export COMPOSER_PROVIDERS='{
         "failureRedirect": "/"
     }
 }'
+```
+
+---
+
+## expo에 포함된 facebook API
+```
+async logIn() {
+    try {
+      const {
+        type,
+        token,
+        expires,
+        permissions,
+        declinedPermissions,
+      } = await Expo.Facebook.logInWithReadPermissionsAsync('YOUR_FACEBOOK_APP_ID', {
+        permissions: ['public_profile'],
+      });
+      if (type === 'success') {
+        // Get the user's name using Facebook's Graph API
+        const response = await fetch(
+          `https://graph.facebook.com/me?access_token=${token}`
+        );
+        alert('Logged in!' + `Hi ${(await response.json()).name}!`);
+      } else {
+        // type === 'cancel'
+      }
+    } catch ({ message }) {
+      alert(`Facebook Login Error: ${message}`);
+    }
+  }
 ```
 
 ---
@@ -310,3 +346,29 @@ export default MyScreen;
   - [1단계](https://github.com/IBM/BlockchainNetwork-CompositeJourney/blob/master/README-ko.md)
   - [2단계](https://github.com/IBM/BlockchainSmartContractTrading-CompositeJourney/blob/master/README-ko.md)
   - [3단계](https://github.com/IBM/BlockchainEvents-CompositeJourney/blob/master/README-ko.md)
+
+---
+
+### REST 서버의 데이터를 유지하기 위한 DB 설정
+- 환경변수에 다음과 같이 DATASOURCE에 대해 설정합니다.
+- mongoDB이외에도 다양한 DB를 연결 할 수 있습니다.
+  - [loopback의 dataSource 설정 관련 문서](https://loopback.io/doc/en/lb2/Connecting-models-to-data-sources.html)
+```
+export COMPOSER_DATASOURCES='{
+    "db": {
+        "name": "db",
+        "connector": "mongodb",
+        "host": "ds149404.mlab.com",
+        "port": 49404,
+        "database": "composer",
+        "username": "composer",
+        "password": "xxxxxxxxxxx"
+    }
+}'
+```
+- 테스트용 mongodb는 mlab.com 을 이용해보세요.
+  - db를 생성하고
+  - 해당 db를 사용할 수 있는 사용자를 만들어서
+  - 해당 db의 정보를 위 환경 변수에 반영하세요.
+
+---
